@@ -1,6 +1,7 @@
 # emacs.d
 My Emacs Configuration
 
+```
 cd ~
 mv .emacs.d .emacs.d.bak
 mv .emacs .emacs.bak
@@ -10,3 +11,4 @@ emacs
 
 mkdir ~/.spacemacs.d
 mv ~/.spacemacs ~/.spacemacs.d/init.el
+```
