@@ -110,7 +110,7 @@
 ;; 定义F2 打开spacemacs配置文件
 (defun openMySpacemacsConfigFile()
   (interactive)
-  (find-file "~/.emacs.d/.spacemacs.d/init.el"))
+  (find-file "~/.spacemacs.d/init.el"))
 
 (global-set-key (kbd "<f2>") 'openMySpacemacsConfigFile)
 
