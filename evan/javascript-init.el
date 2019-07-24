@@ -4,7 +4,7 @@
   :init
   (global-flycheck-mode t))
 
-(setq default-tab-width 2)
+(setq global-default-tab-width 2)
 
 ;; web-mode
 (use-package web-mode
