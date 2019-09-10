@@ -82,20 +82,10 @@
 (with-eval-after-load 'neotree
   (define-key neotree-mode-map (kbd "f") 'neotree-quick-look))
 
-;; ace-jump-mode
-;; (autoload
-;;   'ace-jump-mode
-;;   "ace-jump-mode" t)
-;; (eval-after-load "ace-jump-mode"
-;;   '(ace-jump-mode-enable-mark-sync))
-;; ;; 跳入
-;; (define-key global-map (kbd "C-c f") 'ace-jump-mode)
-;; ;; 跳回
-;; (define-key global-map (kbd "C-c b") 'ace-jump-mode-pop-mark)
+;; 光标导航
+;; (define-key global-map (kbd "C-:") 'avy-goto-char)
 
-(define-key global-map (kbd "C-:") 'avy-goto-char)
-
-(define-key global-map (kbd "C-'") 'avy-goto-char2)
+;; (define-key global-map (kbd "C-'") 'avy-goto-char2)
 
 ;; 低配版彩虹猫
 ;; (nyan-mode t)
