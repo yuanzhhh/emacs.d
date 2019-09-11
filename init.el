@@ -340,9 +340,8 @@ you should place your code here."
   (add-to-list 'load-path "~/.spacemacs.d/evan")
 
   (require 'main-init)
-
+  (require 'theme)
   (require 'javascript-init)
-
   (require 'git-init)
   )
 
