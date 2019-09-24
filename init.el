@@ -342,6 +342,7 @@ you should place your code here."
   (require 'main-init)
   (require 'javascript-init)
   (require 'git-init)
+  (require 'themes-init)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
