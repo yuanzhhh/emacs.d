@@ -215,3 +215,5 @@ determine the exact padding."
 
 ;; Gruvbox Theme
 ;; (load-theme 'gruvbox t)
+
+(provide 'themes-init)

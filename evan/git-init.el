@@ -6,5 +6,4 @@
 (require 'git-messenger)
 (global-set-key (kbd "C-, g m") 'git-messenger:popup-message)
 
-
 (provide 'git-init)
