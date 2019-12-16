@@ -72,7 +72,6 @@ values."
     posframe
     pos-tip
     lv
-    message
     hydra
     )
    ;; A list of packages that cannot be updated.
