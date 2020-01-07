@@ -340,7 +340,9 @@ you should place your code here."
   (require 'javascript-init)
   (require 'git-init)
   (require 'themes-init)
+  ;; 弹框模糊搜索
   (require 'snails)
+  ;; 赋值对齐
   (require 'smart-align)
   )
 
