@@ -334,12 +334,14 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (add-to-list 'load-path "~/.spacemacs.d/evan")
   (add-to-list 'load-path "~/.spacemacs.d/snails")
+  (add-to-list 'load-path "~/.spacemacs.d/smart-align")
 
   (require 'main-init)
   (require 'javascript-init)
   (require 'git-init)
   (require 'themes-init)
   (require 'snails)
+  (require 'smart-align)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
