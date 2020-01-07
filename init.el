@@ -333,11 +333,13 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (add-to-list 'load-path "~/.spacemacs.d/evan")
+  (add-to-list 'load-path "~/.spacemacs.d/snails")
 
   (require 'main-init)
   (require 'javascript-init)
   (require 'git-init)
   (require 'themes-init)
+  (require 'snails)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
