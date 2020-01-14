@@ -16,7 +16,7 @@
 ;; 补全
 (use-package company
   :init
-  (setq company-idle-delay 0.1
+  (setq company-idle-delay 0
         company-echo-delay 0
         company-show-numbers t
         company-minimum-prefix-length 2
