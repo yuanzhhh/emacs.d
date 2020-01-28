@@ -336,8 +336,8 @@ you should place your code here."
   (add-to-list 'load-path "~/.spacemacs.d/evan")
   (add-to-list 'load-path "~/.spacemacs.d/snails")
   (add-to-list 'load-path "~/.spacemacs.d/smart-align")
+  (org-babel-load-file (expand-file-name "~/.spacemacs.d/evan/base.org" user-emacs-directory))
 
-  (require 'main-init)
   (require 'javascript-init)
   (require 'git-init)
   (require 'themes-init)
