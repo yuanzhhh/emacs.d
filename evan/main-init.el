@@ -11,6 +11,10 @@
 
 (use-package company-tabnine :ensure t)
 
+;; macos下打开当前 buffer finder
+(require 'reveal-in-osx-finder)
+(global-set-key (kbd "C-c z") 'reveal-in-osx-finder)
+
 (require 'company-tabnine)
 
 ;; 补全
