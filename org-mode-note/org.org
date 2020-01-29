@@ -279,20 +279,29 @@
    当对一个选定的文本块(Transient Mark mode)作升级/降级操作时,会影响到文本块中所有的标题.  要选择一个包含很多标题的文本块,最好是把point和mark都放在行首,mark放在第一个标题的行首,point放在要改变的最后哪个标题的下一行的行首. 需要注意的是,如果光标在表格内部(参见[[#tables][表格]]). Meta-光标键的操作有不同的作用.
 
 ** Sparse树              :与情景有关的匹配
-   Org-mode的一个很重要的功能是它可以根据一系列的条件,将一棵大纲树中所匹配出来的一部分形成一棵sparse树,也就是说,整个文档都会尽可能的折叠起来,唯独所匹配的信息和上级标题是可见的[fn:9]. 你只要尝试以下,就立刻能够明白它是怎么工作的. 
+   Org-mode的一个很重要的功能是它可以根据一系列的条件,将一棵大纲树中所匹配出来的一部分形成一棵sparse树,
+   也就是说,整个文档都会尽可能的折叠起来,唯独所匹配的信息和上级标题是可见的[fn:9]. 你只要尝试以下,就立刻能够明白它是怎么工作的. 
 
    Org-mode有很多命令可以创建Sparse树,所有这些命令都可以通过dispatcher来触发.
 
    * C-c / (org-sparse-tree) ::
-        它会提示你输入一个额外的快捷键来选择特定的sparse树的创建命令
+    它会提示你输入一个额外的快捷键来选择特定的sparse树的创建命令
    * C-r / r (org-occur) :: 
-	提示输入一个正则表达式,然后显示所有匹配的sparse树. 如果有标题匹配,那么只有这个标题可见. 如果是正文匹配,那么标题和正文同时可见. 为了提供最低限度的上下文信息,所有上层标题和紧跟者匹配部分的标题都会被显示. 每个匹配的部分都被高亮; 若这是你对文档进行编辑动作,则高亮会消失[fn:10]. 同样你也可以通过C-c C-c来取消高亮. 如果执行C-u C-c / r则以前匹配的高亮会被高持,这样多次调用这个命令的结果就被保存了下来.
+    提示输入一个正则表达式,然后显示所有匹配的sparse树. 
+    如果有标题匹配,那么只有这个标题可见. 
+    如果是正文匹配,那么标题和正文同时可见. 
+    为了提供最低限度的上下文信息,所有上层标题和紧跟者匹配部分的标题都会被显示. 
+    每个匹配的部分都被高亮; 若这是你对文档进行编辑动作,则高亮会消失[fn:10]. 
+    同样你也可以通过C-c C-c来取消高亮. 
+    如果执行C-u C-c / r则以前匹配的高亮会被高持,这样多次调用这个命令的结果就被保存了下来.
    * M-g n 或者 M-g M-n (next-error) :: 
-	跳到当前buffer中匹配的下一个sparse树
+    跳到当前buffer中匹配的下一个sparse树
    * M-g p 或者 M-g M-p (previous-error) :: 
-	跳到当前buffer中匹配的上一个sparse树
+    跳到当前buffer中匹配的上一个sparse树
 
-   对于那些常用的sparse树查询,你可以在变量'org-agenda-custom-commands'中定义快捷键,直接执行这些sparse树查询. 然后就可以在agenda dispatcher中使用这些快捷键来快速查询了.例如
+    对于那些常用的sparse树查询,你可以在变量'org-agenda-custom-commands'中定义快捷键,直接执行这些sparse树查询. 
+    然后就可以在agenda dispatcher中使用这些快捷键来快速查询了.
+    例如: 
    #+BEGIN_SRC emacs-lisp
      (setq org-agenda-custom-commands
            '(("f" occur-tree "FIXME")))
@@ -301,18 +310,26 @@
 
    其他的sparse树命令(例如通过TODO关键字,标签或者属性来查找)会在手册后一点的位置提到.
 
-   要打印出sparse树,你可以使用emacs命令'ps-print-buffer-with-faces',这个命令不会把不可见部分给打印出来[fn:11]. 或者你可以用命令'C-c C-e v'把可视化的部分导出到文档中,然后打印导出文档.
+   要打印出sparse树,你可以使用emacs命令'ps-print-buffer-with-faces',这个命令不会把不可见部分给打印出来[fn:11]. 
+   或者你可以用命令'C-c C-e v'把可视化的部分导出到文档中,然后打印导出文档.
 ** 纯文本列表             :条目中的附加结构
-   在大纲树的正文内容中,手工排列好的列表被认为是带有一定结构的. Org提供了一种方式来创建带复选框的列表(参见[[#Checkboxes][复选框]]),它提供工具来编辑这种列表,并且在导出时(参见章节[[Exporting][导出]])能够解析并且格式化这些列表.
+   在大纲树的正文内容中,手工排列好的列表被认为是带有一定结构的. 
+   Org提供了一种方式来创建带复选框的列表(参见[[#Checkboxes][复选框]]),它提供工具来编辑这种列表,并且在导出时(参见章节[[Exporting][导出]])能够解析并且格式化这些列表.
 
    Org支持有序列表,无序列表和描述列表
    * 无序列表,以'-','+'或者'*'[fn:12]开头
-   * 有序列表以数字开头,后接句号或者右括[fn:13](像这样'1.','1)')[fn:14]. 如果你想让列表以其他值作为初始值开始计数,需要以类似[@20]这样的文本开头[fn:15]. 这样的用法可以用在列表的任何一项上(而不需要仅仅是第一项),以强制从指定数字顺序开始.
+   * 有序列表以数字开头,后接句号或者右括[fn:13](像这样'1.','1)')[fn:14]. 
+     如果你想让列表以其他值作为初始值开始计数,需要以类似[@20]这样的文本开头[fn:15]. 
+     这样的用法可以用在列表的任何一项上(而不需要仅仅是第一项),以强制从指定数字顺序开始.
    * 描述列表是一种无序列表,它包含'::'作为分隔符来分割术语和描述.
 
-   同一个列表中的列表项必须有相同的缩进. 尤其当一个有序列表的计数达到了'10'的时候,那么这两位的计数必须与列表中的其他计数左对齐. (一个列表项可以是多行的.)当一个列表项的下一行的缩进与该列表项本身的缩进相等甚至跟少时,才表示该列表项结束了.
+   同一个列表中的列表项必须有相同的缩进. 
+   尤其当一个有序列表的计数达到了'10'的时候,那么这两位的计数必须与列表中的其他计数左对齐. 
+   (一个列表项可以是多行的.)当一个列表项的下一行的缩进与该列表项本身的缩进相等甚至跟少时,才表示该列表项结束了.
 
-   当所有的列表项结束时,一个列表才被认为是结束了的,这意味在有一行的缩进等于或者小于列表第一项的缩进前,该列表都没有结束. 当然,你也可以用两个空白行[fn:16]来强制结束列表. 这种情况下,所有的列表项都被关闭了.下面是一个例子.
+   当所有的列表项结束时,一个列表才被认为是结束了的,这意味在有一行的缩进等于或者小于列表第一项的缩进前,该列表都没有结束. 
+   当然,你也可以用两个空白行[fn:16]来强制结束列表. 这种情况下,所有的列表项都被关闭了.
+   下面是一个例子:
    #+BEGIN_SRC emacs-lisp
      ,** Lord of the Rings
         My favorite scenes are (in this order)
@@ -330,11 +347,15 @@
           him very well from his role as Mikey Walsh in The Goonies.   
    #+END_SRC
 
-   Org能正确地对这些列表进行filling和warpping调整[fn:17], 而且能够以一种恰当的方式导出这些列表(参见[[#Exporting][导出]]). 由于缩进决定了这些列表的结构,许多像#+BEGIN_...这样的block可以通过缩进来表明它们是属于哪一个列表项的一部分的.
+   Org能正确地对这些列表进行filling和warpping调整[fn:17], 而且能够以一种恰当的方式导出这些列表(参见[[#Exporting][导出]]). 
+   由于缩进决定了这些列表的结构,许多像#+BEGIN_...这样的block可以通过缩进来表明它们是属于哪一个列表项的一部分的.
 
-   如果你觉得为子列表使用不同的标示(而不使用当前列表项的标示)可以增加可读性,你可以自定义变量'org-list-demote-modify-bullet'. 如果你想改变缩进程度,自定义变量'org-list-indent-offset'
+   如果你觉得为子列表使用不同的标示(而不使用当前列表项的标示)可以增加可读性,你可以自定义变量'org-list-demote-modify-bullet'. 
+   如果你想改变缩进程度,自定义变量'org-list-indent-offset'
 
-   当光标处于某列表项的第一行(即带有列表项标示的那一行),可以用下面这些命令来对列表项进行操作. 其中有些命令暗含某些规则来保证列表结构是正确的. 如果你想让这些命令妨碍了你,可以通过配置'org-list-automatic-rule'来禁用其中的某些命令.
+   当光标处于某列表项的第一行(即带有列表项标示的那一行),可以用下面这些命令来对列表项进行操作. 
+   其中有些命令暗含某些规则来保证列表结构是正确的. 
+   如果你想让这些命令妨碍了你,可以通过配置'org-list-automatic-rule'来禁用其中的某些命令.
    * <TAB> (org-cycle) ::
         列表项可以像标题一样具有折叠的功能. 正常情况下,只有当光标处在plain list item上时才能进行这种折叠操作. 欲了解更多的细节,请看变量'org-cycle-include-plain-lists'. 如果该变量的值为'integrate'. plain list items会被当成是低层次的标题看待. 而*号和数字缩进层次则决定了把它当成几级标题来看待. 列表项的等级总是要低于真正的标题, 然而列表的等级制度与标题的等级制度是完全分开的. 在一个新的还未写内容的列表项上,第一次按<TAB>会把它变成上一个列表项的子项.再按一次<TAB>会上升一个层级,并且下去直到最顶列表项的层级,再按一次则返回最原始的层级位置.
    * M-<RET> (org-insert-heading) :: 
@@ -363,7 +384,8 @@
    * C-c ^ :: 
 	对列表进行排序. 你会被提示输入排序方法,有按数字排序,按字符排序,按时间排序或自定义方法排序.
 ** 抽屉                  :收缩起所有的资料
-   有时候你想记录下一项事务的某些信息,但是这些信息在一般情况下是没必要显示出来的. 为了实现这个目的,Org mode提供了drawers功能. drawers需要在变量'org-drawers'[fn:22]中进行配置. Drawers看起来就像这样:
+   有时候你想记录下一项事务的某些信息,但是这些信息在一般情况下是没必要显示出来的. 
+   为了实现这个目的,Org mode提供了drawers功能. drawers需要在变量'org-drawers'[fn:22]中进行配置. Drawers看起来就像这样:
    #+BEGIN_SRC org
      ,** This is a headline
      ,   Still outside the drawer
@@ -373,24 +395,35 @@
      ,   After the drawer.
    #+END_SRC
 
-   无论如何在标题上切换可见性(参见[[#Visibility cycling][切换可见性]]),drawer都是收缩为一行显示的. 要看drawer内的信息,你需要移动鼠标到drawer这一行,然后按<TAB>键. Org-mode使用名为'PROPERTIES'的drawer来存放属性(参见[[#Properties and columns][属性与列]]), 你也可以把状态改变记录(参见[[Tracking TODO state changes][跟踪TODO状态变化]])和计时时间(参见[[#Clocking work time][记录工作时间]])存放在名为'LOGBOOK'的drawer中. 如果你想像状态变化信息一样把自己的一段记录也存放到名为'LOGBOOK'的这个drawer中,使用
+   无论如何在标题上切换可见性(参见[[#Visibility cycling][切换可见性]]),drawer都是收缩为一行显示的. 
+   要看drawer内的信息,你需要移动鼠标到drawer这一行,然后按<TAB>键. 
+   Org-mode使用名为'PROPERTIES'的drawer来存放属性(参见[[#Properties and columns][属性与列]]), 
+   你也可以把状态改变记录(参见[[Tracking TODO state changes][跟踪TODO状态变化]])和计时时间(参见[[#Clocking work time][记录工作时间]])存放在名为'LOGBOOK'的drawer中. 
+   如果你想像状态变化信息一样把自己的一段记录也存放到名为'LOGBOOK'的这个drawer中,使用
    * C-c C-z ::
         添加一个带有时间戳信息的记录到名为'LOGBOOK'的drawer中
 ** 区块                  :折叠的区块
-   Org-mode使用begin...end块来实现很多功能,比如引入源代码(参见[[#Literal examples][文学化例子]]),记录计时信息(参见[[#Clocking work time][记录工作时间]]). 在这些区块的第一行上按TAB键可以折叠/扩展该区块. 你也可以在设置在启动时自动折叠所有的块,方法是配置变量'org-hide-block-startup'或者在每个文件加上
+   Org-mode使用begin...end块来实现很多功能,比如引入源代码(参见[[#Literal examples][文学化例子]]),记录计时信息(参见[[#Clocking work time][记录工作时间]]). 
+   在这些区块的第一行上按TAB键可以折叠/扩展该区块. 
+   你也可以在设置在启动时自动折叠所有的块,方法是配置变量'org-hide-block-startup'或者在每个文件加上
    #+BEGIN_SRC org
      ,#+STARTUP: hideblocks
      ,#+STARTUP: nohideblocks
    #+END_SRC
 ** 注脚                  :如何用Org标签定义注脚
-   Org-mode支持创建注脚. 与'footnote.el'包相反,Org-mode中的注脚功能是专门设计在大型文档来使用的,而不仅仅是用在类型email这样的一次性文件上的. org-mode中注脚的基本语法类似于'footnote.el'中的语法,即,要在段落中定义一个注脚,它需要顶格(不能有缩进)以方括号作为注脚的标记. 如果你需要在注脚内分段,使用LaTeX语法'\par'. 要定义注脚引用,只需要简单的在文本中用方括号做一个标记. 例如
+   Org-mode支持创建注脚. 
+   与'footnote.el'包相反,Org-mode中的注脚功能是专门设计在大型文档来使用的,而不仅仅是用在类型email这样的一次性文件上的. 
+   org-mode中注脚的基本语法类似于'footnote.el'中的语法,即,要在段落中定义一个注脚,它需要顶格(不能有缩进)以方括号作为注脚的标记. 
+   如果你需要在注脚内分段,使用LaTeX语法'\par'. 要定义注脚引用,只需要简单的在文本中用方括号做一个标记. 例如
    #+BEGIN_SRC org
      ,The Org homepage[fn:1] now looks a lot better than it used to.
      ,...
      ,[fn:1] The link is: http://orgmode.org
    #+END_SRC
 
-   Org-mode会把'footnote.el'中基于数字的语法扩展为可以为注脚命名并且可以选择给注脚提供内部定义. 使用纯数字作为注脚标注(footnote.el就是这样作的)是为了提供向后兼容性,但是这种方式不鼓励使用,因为这种方式可能会与LaTeX snippets(参见[[#Embedded LaTeX][内嵌LaTeX]])冲突. 下面列举几种有效的注脚引用:
+   Org-mode会把'footnote.el'中基于数字的语法扩展为可以为注脚命名并且可以选择给注脚提供内部定义. 
+   使用纯数字作为注脚标注(footnote.el就是这样作的)是为了提供向后兼容性,但是这种方式不鼓励使用,因为这种方式可能会与LaTeX snippets(参见[[#Embedded LaTeX][内嵌LaTeX]])冲突. 
+   下面列举几种有效的注脚引用:
    * [ 1 ] ::
         一个纯数字的注脚标记. 与'footnote.el'兼容,但是不推荐使用,因为像'[ 1 ]'这样的东西,很可能是code snippet的一部分.
    * [ fn:name ] :: 
@@ -400,7 +433,9 @@
    * [ fn:name:a definition ] ::
         这是一个带有名字的自定义的注脚. 由于Org-mode允许从多处引用到同一个说明,你可以使用[ fn:name ]来创建更多的引用.
 
-   注脚标记可以被自动创建,你也可以自定义标记自动创建时的名字. 这是由变量'org-footnote-auto-label'变量和变量相应的'#+STARTUP'关键字来决定的. 欲了解详情请查看该变量的文档字符串.
+   注脚标记可以被自动创建,你也可以自定义标记自动创建时的名字. 
+   这是由变量'org-footnote-auto-label'变量和变量相应的'#+STARTUP'关键字来决定的. 
+   欲了解详情请查看该变量的文档字符串.
 
    下面这些都是操作注脚的命令
    * C-c C-x f ::
@@ -427,7 +462,11 @@
    * C-c C-o 或 鼠标左键 或鼠标右键 :: 
 	注脚标签也是注脚定义与注脚引用相互之间的一种链接,你可以使用跳转链接的一般命令来在注脚定义/引用间相互跳转.
 ** Orgstruct的minior模式 :在Org之外进行结构编辑
-   如果你喜欢Org-mode编辑结构和格式化列表时的这种直接了当的感受,你可能希望在其他mode下(比如Text-mode或者mail-mode)也能使用这些命令. 这时你可以使用名为'orgstruct-mode'的minor mode. 使用'M-x orgstruct-mode'来切换mode. 如果你想在默认情况下启用'orgstruct-mode',例如设置在Message-mode下默认启用该mode,可以在配置文件中添加下面中的任一句
+   如果你喜欢Org-mode编辑结构和格式化列表时的这种直接了当的感受,
+   你可能希望在其他mode下(比如Text-mode或者mail-mode)也能使用这些命令. 
+   这时你可以使用名为'orgstruct-mode'的minor mode. 
+   使用'M-x orgstruct-mode'来切换mode. 
+   如果你想在默认情况下启用'orgstruct-mode',例如设置在Message-mode下默认启用该mode,可以在配置文件中添加下面中的任一句
    #+BEGIN_SRC emacs-lisp
      (add-hook 'message-mode-hook 'turn-on-orgstruct)
      (add-hook 'message-mode-hook 'turn-on-orgstruct++)
