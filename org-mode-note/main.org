@@ -11,6 +11,9 @@
 
      ,*   Another top level headline
    #+END_SRC
+   
+   * C-enter 可以创建一个标题
+
 ** 显示和隐藏的切换
    * <TAB> (org-cycle) :: 子树循环：以下面的循环状态来切换当前子树的状态
   #+BEGIN_EXAMPLE
