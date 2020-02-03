@@ -76,6 +76,7 @@ values."
     reveal-in-osx-finder
     ;; 将代码转换为图片 M-x carbon-now-sh
     carbon-now-sh
+    smartparens
     )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()

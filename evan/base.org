@@ -167,6 +167,12 @@
           company-pseudo-tooltip-frontend
           company-echo-metadata-frontend))
   #+END_SRC
+
+** smartparens
+   #+BEGIN_SRC emacs-lisp
+    (require 'smartparens-config)
+    (add-hook 'web-mode-hook #'smartparens-mode)
+   #+END_SRC
 * Git
 ** Walk through git revisions of a file
    #+BEGIN_SRC emacs-lisp

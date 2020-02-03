@@ -136,6 +136,9 @@
         company-pseudo-tooltip-frontend
         company-echo-metadata-frontend))
 
+(require 'smartparens-config)
+(add-hook 'web-mode-hook #'smartparens-mode)
+
 (use-package git-timemachine
   :custom-face
   (git-timemachine-minibuffer-author-face ((t (:inherit success))))
