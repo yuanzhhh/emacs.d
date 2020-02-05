@@ -170,10 +170,10 @@
     * M-left/right :: 改变当前层级的级别
     * M-up/dowm :: 上下移动列表项
 
-    * 任务1 [66%]
+    * 任务1 [100%]
       1) [X] a
       2) [X] b
-      3) [ ] c
+      3) [X] c
 
     * 任务1 [3/3]
       * [X] 
@@ -210,6 +210,39 @@
     **** 节标题1     :fly:plane:
     **** 节标题2     :car:run:
    #+END_SRC
+
+** 表格
+   * C-c | :: 通过输入大小的方式插入表格
+   * C-c C-c :: 对齐表格
+   * Tab ::  调到右边一个表格
+   * enter :: 跳到下方表格
+   * M-up/right/left/right :: 上下左右移动行（列）
+   * M-S-up/right/left/right :: 向上下左右插入行（列）
+
+   * 计算 :: 在total列任选一个位置，输入=$3+$4 ，然后按C-u C-c C-c ，org-mode便能自动为我们计算所有三列加四列的和，并放到第五列。
+
+   | A      | B          |  C |  D | E |
+   |--------+------------+----+----+---|
+   | auto   | definition | 50 | 30 |   |
+   | workdw | workdw     | 33 | 32 |   |
+   #+TBLFM: %5=%3+%4
+   
+** 待办事项TODO
+   TODO 也是以标题开始
+
+   #+BEGIN_SRC org
+   ** TODO 名称
+   #+END_SRC
+   
+   * C-c C-t :: 将标题标记为 TODO / DONE 
+
+*** TODO [100%] 
+    1. [X] a
+    2. [X] b
+    3. [X] c
+
+** 时间
+   * C-c . :: 创建一个时间
 
 * Footnotes
 
