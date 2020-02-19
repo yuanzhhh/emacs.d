@@ -1,16 +1,22 @@
 
 
-(defun openMyInitConfigFile()
+(defun openMyNoteFile()
   (interactive)
-  (find-file "~/.emacs.d/init.el"))
+  (find-file "~/note/work.org"))
 
-(global-set-key (kbd "<f1>") 'openMyInitConfigFile)
+(global-set-key (kbd "<f1>") 'openMyNoteFile)
 
 (defun openMySpacemacsConfigFile()
   (interactive)
   (find-file "~/.spacemacs.d/init.el"))
 
 (global-set-key (kbd "<f2>") 'openMySpacemacsConfigFile)
+
+(defun openMyInitConfigFile()
+  (interactive)
+  (find-file "~/.emacs.d/init.el"))
+
+(global-set-key (kbd "<f3>") 'openMyInitConfigFile)
 
 (require 'reveal-in-osx-finder)
 (global-set-key (kbd "C-c z") 'reveal-in-osx-finder)

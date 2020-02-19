@@ -4,12 +4,13 @@
 * Base
 ** <F1> open ~/.emacs.d/init.el
   #+BEGIN_SRC emacs-lisp
-  (defun openMyInitConfigFile()
+  (defun openMyNoteFile()
     (interactive)
-    (find-file "~/.emacs.d/init.el"))
+    (find-file "~/note/work.org"))
 
-  (global-set-key (kbd "<f1>") 'openMyInitConfigFile)
+  (global-set-key (kbd "<f1>") 'openMyNoteFile)
   #+END_SRC 
+
 ** <F2> open ~/.spacemacs.d/init.el
   #+BEGIN_SRC emacs-lisp
   (defun openMySpacemacsConfigFile()
@@ -18,16 +19,28 @@
 
   (global-set-key (kbd "<f2>") 'openMySpacemacsConfigFile)
   #+END_SRC
+
+** <F3> open Note
+  #+BEGIN_SRC emacs-lisp
+  (defun openMyInitConfigFile()
+    (interactive)
+    (find-file "~/.emacs.d/init.el"))
+
+  (global-set-key (kbd "<f3>") 'openMyInitConfigFile)
+  #+END_SRC
+
 ** 下打开当前 buffer finder
    #+BEGIN_SRC emacs-lisp
   (require 'reveal-in-osx-finder)
   (global-set-key (kbd "C-c z") 'reveal-in-osx-finder)
    #+END_SRC
+
 ** 显示行号
    #+BEGIN_SRC emacs-lisp
   ;; Linum mode 行数多了会卡
   (global-nlinum-mode)
    #+END_SRC
+
 ** 禁止自动保存、备份
    #+BEGIN_SRC emacs-lisp
   (setq backup-inhibited t
@@ -36,14 +49,17 @@
         auto-save-default nil
         create-lockfiles nil)
    #+END_SRC
+
 ** 匹配括号引号
    #+BEGIN_SRC emacs-lisp
   (autopair-global-mode t)
    #+END_SRC
+
 ** 全屏
    #+BEGIN_SRC emacs-lisp
   (setq initial-frame-alist (quote ((fullscreen . maximized))))
    #+END_SRC
+
 ** neotree
   #+BEGIN_SRC emacs-lisp
   ;; all-the-icons for https://github.com/domtronn/all-the-icons.el
@@ -62,20 +78,24 @@
   (with-eval-after-load 'neotree
     (define-key neotree-mode-map (kbd "f") 'neotree-quick-look))
   #+END_SRC
+
 ** 光标导航
   #+BEGIN_SRC emacs-lisp
   ;; (define-key global-map (kbd "C-:") 'avy-goto-char)
   ;; (define-key global-map (kbd "C-'") 'avy-goto-char2)
   #+END_SRC
+
 ** 低配版彩虹猫
   #+BEGIN_SRC emacs-lisp
   ;; (nyan-mode t)
   #+END_SRC
+
 ** multi-term
   #+BEGIN_SRC emacs-lisp
   (require 'multi-term)
   (setq multi-term-program "/bin/zsh")
   #+END_SRC
+
 ** Iterm2 goto probject local
   #+BEGIN_SRC emacs-lisp
   (defun iterm-goto-probject-local ()
@@ -108,6 +128,7 @@
 
   (global-set-key (kbd "C-, f") 'iterm-focus)
   #+END_SRC
+
 ** Company conf
   #+BEGIN_SRC emacs-lisp
   (use-package company-tabnine :ensure t)
@@ -173,6 +194,7 @@
     (require 'smartparens-config)
     (add-hook 'web-mode-hook #'smartparens-mode)
    #+END_SRC
+
 * Git
 ** Walk through git revisions of a file
    #+BEGIN_SRC emacs-lisp
