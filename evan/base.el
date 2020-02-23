@@ -145,6 +145,8 @@
 (require 'smartparens-config)
 (add-hook 'web-mode-hook #'smartparens-mode)
 
+;; (evil-define-key '(normal) tide-mode-map (kbd "g d") 'tide-jump-to-definition))
+
 (use-package git-timemachine
   :custom-face
   (git-timemachine-minibuffer-author-face ((t (:inherit success))))

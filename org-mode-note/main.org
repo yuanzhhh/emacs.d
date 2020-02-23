@@ -15,6 +15,11 @@
    #+END_SRC
    * C-enter（Ctrl+回车） :: 可以创建一个标题
 
+   文章中的标题可以通过 #+TITTLE: 来设置标题
+   #+BEGIN_SRC emacs-lisp
+    #+TITTLE: 标题名称
+   #+END_SRC
+
 ** 显示和隐藏的切换
    * <TAB> (org-cycle) :: 子树循环：以下面的循环状态来切换当前子树的状态
   #+BEGIN_EXAMPLE
