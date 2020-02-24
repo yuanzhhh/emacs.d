@@ -197,8 +197,8 @@
 
 ** evil
    #+BEGIN_SRC emacs-lisp
-      ;; 退出vim输入模式
-      (global-set-key (kbd "C-c C-g") 'evil-escape)
+    ;; 退出vim输入模式
+    (global-set-key (kbd "C-c C-g") 'evil-escape)
    #+END_SRC
 
 * Git
