@@ -63,7 +63,7 @@
   (interactive)
   (do-applescript
   (concat
-    " tell application \"iTerm2\"\n"
+    " tell application \"iTerm\"\n"
     "   tell the current session of current window\n"
     (format "     write text \"cd %s\" \n"
             ;; string escaping madness for applescript
