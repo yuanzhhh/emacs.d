@@ -145,7 +145,8 @@
 (require 'smartparens-config)
 (add-hook 'web-mode-hook #'smartparens-mode)
 
-;; (evil-define-key '(normal) tide-mode-map (kbd "g d") 'tide-jump-to-definition))
+;; 退出vim输入模式
+(global-set-key (kbd "C-c C-g") 'evil-escape)
 
 (use-package git-timemachine
   :custom-face

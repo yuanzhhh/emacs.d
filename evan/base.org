@@ -195,9 +195,10 @@
     (add-hook 'web-mode-hook #'smartparens-mode)
    #+END_SRC
 
-** 输入法
+** evil
    #+BEGIN_SRC emacs-lisp
-       ;; (evil-define-key '(normal) tide-mode-map (kbd "g d") 'tide-jump-to-definition))
+      ;; 退出vim输入模式
+      (global-set-key (kbd "C-c C-g") 'evil-escape)
    #+END_SRC
 
 * Git
