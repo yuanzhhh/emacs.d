@@ -347,9 +347,9 @@ you should place your code here."
   (org-babel-load-file (expand-file-name "~/.spacemacs.d/evan/base.org" user-emacs-directory))
   (add-to-list 'load-path "~/.spacemacs.d/snails")
   (add-to-list 'load-path "~/.spacemacs.d/smart-align")
-  (add-to-list 'load-path "~/.spacemacs.d/emacs-kaolin-themes")
+  (add-to-list 'load-path "~/.spacemacs.d/nerd-icons.el")
 
-  (require 'kaolin-themes)
+  (require 'nerd-icons)
   ;; 弹框模糊搜索
   (require 'snails)
   ;; 赋值对齐
@@ -375,5 +375,6 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(dired-symlink ((t (:inherit bold :background "#59B26A" :foreground "#ffffff" :weight bold))))
  '(git-timemachine-minibuffer-author-face ((t (:inherit success))))
  '(git-timemachine-minibuffer-detail-face ((t (:inherit warning)))))
