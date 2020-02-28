@@ -1,0 +1,4 @@
+* 应用列表
+  * window 移动 :: https://github.com/rxhanson/Rectangle
+  * z jump :: https://github.com/rupa/z
+  * Karabiner :: https://github.com/pqrs-org/Karabiner-Elements

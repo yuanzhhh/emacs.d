@@ -29,6 +29,11 @@
   (global-set-key (kbd "<f3>") 'openMyInitConfigFile)
    #+END_SRC
 
+** Icons
+   #+BEGIN_SRC emacs-lisp
+    (require 'all-the-icons)
+   #+END_SRC
+
 ** 下打开当前 buffer finder
    #+BEGIN_SRC emacs-lisp
   (require 'reveal-in-osx-finder)
@@ -200,6 +205,12 @@
     ;; 退出vim输入模式
     (global-set-key (kbd "C-c C-g") 'evil-escape)
    #+END_SRC
+
+** doom-modeline
+    #+BEGIN_SRC emacs-lisp
+    (require 'doom-modeline)
+    (doom-modeline-mode 1)
+    #+END_SRC
 
 * Git
 ** Walk through git revisions of a file

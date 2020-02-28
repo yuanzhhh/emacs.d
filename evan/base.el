@@ -18,6 +18,8 @@
 
 (global-set-key (kbd "<f3>") 'openMyInitConfigFile)
 
+(require 'all-the-icons)
+
 (require 'reveal-in-osx-finder)
 (global-set-key (kbd "C-c z") 'reveal-in-osx-finder)
 
@@ -147,6 +149,9 @@
 
 ;; 退出vim输入模式
 (global-set-key (kbd "C-c C-g") 'evil-escape)
+
+(require 'doom-modeline)
+(doom-modeline-mode 1)
 
 (use-package git-timemachine
   :custom-face
@@ -583,7 +588,7 @@ determine the exact padding."
     (dark-blue  '("#3F88AD" "#2257A0" "blue"         ))
     (magenta    '("#d33682" "#c678dd" "magenta"      ))
     (violet     '("#6c71c4" "#a9a1e1" "brightmagenta"))
-    (cyan       '("#4B8500" "#46D9FF" "brightcyan"   ))
+    (cyan       '("#2aa198" "#46D9FF" "brightcyan"   ))
     (dark-cyan  '("#204052" "#5699AF" "cyan"         ))
 
     ;; face categories -- required for all themes
