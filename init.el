@@ -375,6 +375,8 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(dired-symlink ((t (:inherit bold :background "#59B26A" :foreground "#ffffff" :weight bold))))
+ '(org-todo ((t (:inherit bold :background "#ECE8D5" :foreground "#FFFEFA" :weight bold))))
+ '(org-done ((t (:inherit bold :background "#59B26A" :foreground "#FFFEFA" :weight bold))))
+
  '(git-timemachine-minibuffer-author-face ((t (:inherit success))))
  '(git-timemachine-minibuffer-detail-face ((t (:inherit warning)))))
