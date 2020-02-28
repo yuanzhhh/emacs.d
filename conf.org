@@ -3,3 +3,4 @@
   * z jump :: https://github.com/rupa/z
   * Karabiner :: https://github.com/pqrs-org/Karabiner-Elements
   * ColorSlurp :: 取色器
+
