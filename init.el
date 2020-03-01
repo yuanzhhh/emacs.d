@@ -377,5 +377,5 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(git-timemachine-minibuffer-author-face ((t (:inherit success))))
  '(git-timemachine-minibuffer-detail-face ((t (:inherit warning))))
- '(org-done ((t (:inherit bold :background "#59B26A" :foreground "#FFFEFA" :weight bold))))
- '(org-todo ((t (:inherit bold :background "#ECE8D5" :foreground "#FFFEFA" :weight bold)))))
+ '(org-done ((t (:inherit bold :background "#ECEAE1" :foreground "#FFFEFA" :weight bold))))
+ '(org-todo ((t (:inherit bold :background "#ECEAE1" :foreground "#FFFEFA" :weight bold)))))
