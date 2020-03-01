@@ -208,8 +208,8 @@
 
 ** doom-modeline
     #+BEGIN_SRC emacs-lisp
-    (require 'doom-modeline)
-    (doom-modeline-mode 1)
+      ;; (require 'doom-modeline)
+      ;; (doom-modeline-mode 1)
     #+END_SRC
 
 * Git

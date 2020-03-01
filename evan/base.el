@@ -150,8 +150,8 @@
 ;; 退出vim输入模式
 (global-set-key (kbd "C-c C-g") 'evil-escape)
 
-(require 'doom-modeline)
-(doom-modeline-mode 1)
+;; (require 'doom-modeline)
+;; (doom-modeline-mode 1)
 
 (use-package git-timemachine
   :custom-face
