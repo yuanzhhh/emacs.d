@@ -15,7 +15,7 @@
    #+BEGIN_SRC emacs-lisp
   (defun openMySpacemacsConfigFile()
     (interactive)
-    (find-file "~/.spacemacs.d/init.el"))
+    (find-file "~/.spacemacs.d/evan/base.org"))
 
   (global-set-key (kbd "<f2>") 'openMySpacemacsConfigFile)
    #+END_SRC
@@ -207,21 +207,27 @@
    #+END_SRC
 
 ** doom-modeline
-    #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
       ;; (require 'doom-modeline)
       ;; (doom-modeline-mode 1)
-    #+END_SRC
+   #+END_SRC
 
-** deft
-    #+BEGIN_SRC emacs-lisp
+** deft 搜索
+   #+BEGIN_SRC emacs-lisp
     (require 'deft)
 
     (setq deft-extension "org")
     (setq deft-text-mode 'org-mode)
     (setq deft-directory "~/note")
     (setq deft-use-filename-as-title t)
+    (defun ironman-deft-search-for(filter)
+      (interactive "MFilter: ")
+      (deft)
+      (deft-filter filter t)
+    )
     (global-set-key [f4] 'deft)
-    #+END_SRC
+    (global-set-key [f5] 'ironman-deft-search-for)
+   #+END_SRC
 
 * Git
 ** Walk through git revisions of a file
@@ -991,5 +997,3 @@
   #+BEGIN_SRC emacs-lisp
 
   #+END_SRC
-
-

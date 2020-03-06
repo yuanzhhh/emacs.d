@@ -8,7 +8,7 @@
 
 (defun openMySpacemacsConfigFile()
   (interactive)
-  (find-file "~/.spacemacs.d/init.el"))
+  (find-file "~/.spacemacs.d/evan/base.org"))
 
 (global-set-key (kbd "<f2>") 'openMySpacemacsConfigFile)
 
@@ -159,7 +159,13 @@
 (setq deft-text-mode 'org-mode)
 (setq deft-directory "~/note")
 (setq deft-use-filename-as-title t)
+ (defun ironman-deft-search-for(filter)
+   (interactive "MFilter: ")
+   (deft)
+   (deft-filter filter t)
+   )
 (global-set-key [f4] 'deft)
+(global-set-key [f5] 'ironman-deft-search-for)
 
 (use-package git-timemachine
   :custom-face
