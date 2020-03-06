@@ -153,6 +153,14 @@
 ;; (require 'doom-modeline)
 ;; (doom-modeline-mode 1)
 
+(require 'deft)
+
+(setq deft-extension "org")
+(setq deft-text-mode 'org-mode)
+(setq deft-directory "~/note")
+(setq deft-use-filename-as-title t)
+(global-set-key [f4] 'deft)
+
 (use-package git-timemachine
   :custom-face
   (git-timemachine-minibuffer-author-face ((t (:inherit success))))

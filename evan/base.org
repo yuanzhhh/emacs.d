@@ -212,6 +212,17 @@
       ;; (doom-modeline-mode 1)
     #+END_SRC
 
+** deft
+    #+BEGIN_SRC emacs-lisp
+    (require 'deft)
+
+    (setq deft-extension "org")
+    (setq deft-text-mode 'org-mode)
+    (setq deft-directory "~/note")
+    (setq deft-use-filename-as-title t)
+    (global-set-key [f4] 'deft)
+    #+END_SRC
+
 * Git
 ** Walk through git revisions of a file
    #+BEGIN_SRC emacs-lisp
