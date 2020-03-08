@@ -50,7 +50,7 @@
 
 ;; 更改 quick look 键
 (with-eval-after-load 'neotree
-  (define-key neotree-mode-map (kbd "f") 'neotree-quick-look))
+  (define-key neotree-mode-map (kbd "<tab>") 'neotree-quick-look))
 
 ;; (define-key global-map (kbd "C-:") 'avy-goto-char)
 ;; (define-key global-map (kbd "C-'") 'avy-goto-char2)
