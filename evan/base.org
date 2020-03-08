@@ -633,11 +633,6 @@
     ;;   )
 
   #+END_SRC
-* Gruvbox Theme
-  #+BEGIN_SRC emacs-lisp
-    ;; Gruvbox Theme
-    ;; (load-theme 'gruvbox t)
-  #+END_SRC
 * doom-solarized-light
   #+BEGIN_SRC emacs-lisp
     (require 'doom-themes)

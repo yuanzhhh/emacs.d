@@ -542,9 +542,6 @@
 ;;     )
 ;;   )
 
-;; Gruvbox Theme
-;; (load-theme 'gruvbox t)
-
 (require 'doom-themes)
 
 (defgroup doom-solarized-light-theme nil

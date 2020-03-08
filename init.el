@@ -68,7 +68,6 @@ values."
     git-messenger
     ace-jump-mode
     avy
-    gruvbox-theme
     vc-msg
     posframe
     pos-tip
