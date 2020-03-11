@@ -158,6 +158,8 @@
 (setq deft-extension "org")
 (setq deft-text-mode 'org-mode)
 (setq deft-directory "~/note")
+;; 允许子目录递归索引
+(setq deft-recursive t)
 (setq deft-use-filename-as-title t)
 (defun ironman-deft-search-for(filter)
   (interactive "MFilter: ")
