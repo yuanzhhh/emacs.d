@@ -231,6 +231,12 @@
     (global-set-key [f5] 'ironman-deft-search-for)
    #+END_SRC
 
+** org-roam
+   #+BEGIN_SRC emacs-lisp
+    
+   #+END_SRC
+
+
 * Git
 ** Walk through git revisions of a file
    #+BEGIN_SRC emacs-lisp

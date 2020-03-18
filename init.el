@@ -44,6 +44,7 @@ values."
      emacs-lisp
      git
      chinese
+     org-roam
      ;; 高配版彩虹猫
      (colors :variables
              colors-enable-nyan-cat-progress-bar t)
