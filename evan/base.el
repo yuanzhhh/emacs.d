@@ -39,18 +39,20 @@
 ;; all-the-icons for https://github.com/domtronn/all-the-icons.el
 (use-package neotree
   :init
-  (setq neo-theme 'icons
+  (setq
+        neo-theme 'arrow
         neo-smart-open t
         neo-window-position 'left
         neo-autorefresh 1
         neo-mode-line-type 'none
-        neo-hidden-regexp-list '("^\\." "\\.pyc$" "~$" "^#.*#$" "\\.elc$" "node_modules")))
+        neo-hidden-regexp-list '("^\\." "\\.pyc$" "~$" "^#.*#$" "\\.elc$" "node_modules"))
+  :bind
+    ("<tab>" . neotree-quick-look))
 
 (setq projectile-switch-project-action 'neotree-projectile-action)
-
 ;; 更改 quick look 键
-(with-eval-after-load 'neotree
-  (define-key neotree-mode-map (kbd "<tab>") 'neotree-quick-look))
+;; (with-eval-after-load 'neotree
+;;   (define-key neotree-mode-map (kbd "<tab>") 'neotree-quick-look))
 
 ;; (define-key global-map (kbd "C-:") 'avy-goto-char)
 ;; (define-key global-map (kbd "C-'") 'avy-goto-char2)
