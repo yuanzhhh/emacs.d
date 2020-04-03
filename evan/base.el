@@ -1,5 +1,3 @@
-
-
 (defun openMyNoteFile()
   (interactive)
   (find-file "~/note/work.org"))
@@ -311,10 +309,11 @@
     (when (string-equal "tsx" (file-name-extension buffer-file-name))
       (setq-local emmet-expand-jsx-className? t)
       (flycheck-add-mode 'typescript-tslint 'web-mode)
-      (flycheck-add-next-checker 'typescript-tslint 'jsx-tide 'append))
+      (flycheck-add-next-checker 'javascript-eslint 'jsx-tide 'append))
 
     (when (string-equal "ts" (file-name-extension buffer-file-name))
-      (flycheck-add-mode 'typescript-tslint 'web-mode))
+      (flycheck-add-mode 'typescript-tslint 'web-mode)
+      (flycheck-add-next-checker 'javascript-eslint))
 
     (setup-tide-mode)
     ))
