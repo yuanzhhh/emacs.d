@@ -74,8 +74,7 @@ values."
     lv
     hydra
     reveal-in-osx-finder
-    ;; 将代码转换为图片 M-x carbon-now-sh
-    carbon-now-sh
+    carbon-now-sh ;; 将代码转换为图片 M-x carbon-now-sh
     smartparens
     kaolin-themes
     doom-modeline
