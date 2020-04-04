@@ -31,10 +31,10 @@
 (global-nlinum-mode)
 
 (setq backup-inhibited t
-      make-backup-files nil
-      auto-save-list-file-prefix nil
-      auto-save-default nil
-      create-lockfiles nil)
+  make-backup-files nil
+  auto-save-list-file-prefix nil
+  auto-save-default nil
+  create-lockfiles nil)
 
 (autopair-global-mode t)
 
@@ -44,12 +44,12 @@
 (use-package neotree
   :init
   (setq
-        neo-theme 'arrow
-        neo-smart-open t
-        neo-window-position 'left
-        neo-autorefresh 1
-        neo-mode-line-type 'none
-        neo-hidden-regexp-list '("^\\." "\\.pyc$" "~$" "^#.*#$" "\\.elc$" "node_modules"))
+    neo-theme 'arrow
+    neo-smart-open t
+    neo-window-position 'left
+    neo-autorefresh 1
+    neo-mode-line-type 'none
+    neo-hidden-regexp-list '("^\\." "\\.pyc$" "~$" "^#.*#$" "\\.elc$" "node_modules"))
   :bind
     ("<tab>" . neotree-quick-look))
 
@@ -106,8 +106,8 @@
         ;;company-global-modes '(not org-mode)
         )
   :config
-  (global-company-mode)
-  (add-to-list 'company-backends #'company-tabnine)
+    (global-company-mode)
+    (add-to-list 'company-backends #'company-tabnine)
   :bind
   )
 
