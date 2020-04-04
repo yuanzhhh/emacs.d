@@ -331,10 +331,14 @@
 * develop
 ** flycheck
    #+BEGIN_SRC emacs-lisp
-  (use-package flycheck
-    :ensure t
-    :init
-    (global-flycheck-mode t))
+    (use-package flycheck
+        :ensure t
+        :init
+        (global-flycheck-mode t)
+        :custom
+        (flycheck-check-syntax-automatically '(mode-enabled save))
+        :config
+        (flycheck-add-mode 'javascript-eslint 'web-mode))
    #+END_SRC
 ** global-default-tab-width
    #+BEGIN_SRC emacs-lisp
