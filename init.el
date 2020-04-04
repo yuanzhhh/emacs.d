@@ -58,8 +58,7 @@ values."
     company-tabnine
     nlinum
     all-the-icons
-    ;; 低配版彩虹猫
-    nyan-mode
+    nyan-mode ;; 低配版彩虹猫
     lsp-mode
     multi-term
     autopair
