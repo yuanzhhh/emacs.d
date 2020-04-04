@@ -345,37 +345,15 @@
   (setq global-default-tab-width 2)
    #+END_SRC
 
-** web-mode
-   #+BEGIN_SRC emacs-lisp
-    (use-package web-mode
-      :ensure t
-      :config
-      (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
-      (add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . web-mode))
-      (add-to-list 'auto-mode-alist '("\\.ts[x]?\\'" . web-mode))
-      (add-to-list 'auto-mode-alist '("\\.ejs\\'" . web-mode))
-      (setq web-mode-content-types-alist
-            '(("jsx" . ".*\\.js[x]?\\'"))))
-
-      (add-hook 'web-mode-hook
-          (lambda ()
-            ;; `:separate`  使得不同 backend 分开排序
-            (add-to-list 'company-backends '(company-tide :with company-tabnine :separate))
-            (setq web-mode-code-indent-offset 2)
-            (setq-local web-mode-enable-auto-quoting nil)))
-   #+END_SRC
-
 ** Tide
    #+BEGIN_SRC emacs-lisp
      (defun setup-tide-mode ()
        (interactive)
        (tide-setup)
-       (flycheck-mode +1)
-       ;; 保存的时候进行检查
-       ;; flycheck doc http://www.flycheck.org/en/latest/user/syntax-checks.html
+       (flycheck-mode)
        (setq flycheck-check-syntax-automatically '(save mode-enabled))
-       (eldoc-mode +1)
-       (tide-hl-identifier-mode +1))
+       (eldoc-mode)
+       (tide-hl-identifier-mode))
 
      ;; aligns annotation to the right hand side
      (setq company-tooltip-align-annotations t)
@@ -388,6 +366,45 @@
      (setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
 
      (use-package tide :ensure t)
+   #+END_SRC
+** web-mode
+   #+BEGIN_SRC emacs-lisp
+    (use-package web-mode
+      :mode
+      ("\\.html\\'" "\\.js[x]?\\'" "\\.ts[x]?\\'" "\\.vue\\'" "\\.svelte\\'" "\\.twig\\'")
+      :init
+      (add-to-list 'magic-mode-alist '("import.*react" . web-mode))
+      :custom
+      (web-mode-block-padding my/indentation-size)
+      (web-mode-style-padding my/indentation-size)
+      (web-mode-script-padding my/indentation-size)
+      (web-mode-attr-indent-offset my/indentation-size)
+      (web-mode-attr-value-indent-offset my/indentation-size)
+      (web-mode-enable-current-element-highlight t)
+      (web-mode-content-types-alist '(("jsx" . "\\.[jt]?s[x]?\\'")
+                                      ("vue" . "\\.vue\\'")))
+      :config
+      (set-face-background 'web-mode-current-element-highlight-face "#AF3A03")
+      :hook
+      (web-mode . emmet-mode))
+
+      (add-hook 'web-mode-hook
+          (lambda ()
+            ;; `:separate`  使得不同 backend 分开排序
+            (add-to-list 'company-backends '(company-tide :with company-tabnine :separate))
+            (setup-tide-mode)
+            (setq web-mode-code-indent-offset 2)
+            (setq-local web-mode-enable-auto-quoting nil)))
+
+      (add-hook 'web-mode-hook
+                (lambda ()
+                  (pcase web-mode-content-type
+                    ("jsx" (progn
+                            (setq-local emmet-expand-jsx-className? t)
+                            (setq-local web-mode-enable-auto-quoting nil)
+                            (setup-tide-mode)))
+                    ("vue" (setup-tide-mode))
+                    ("html" (prettier-js-mode)))))
    #+END_SRC
 
 ** TypeScript
