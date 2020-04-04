@@ -1,3 +1,9 @@
+(setq global-default-tab-width 2)
+(defvar my/indentation-size 2)
+(setq standard-indent my/indentation-size)
+(setq-default indent-tabs-mode nil
+              tab-width my/indentation-size)
+
 (defun openMyNoteFile()
   (interactive)
   (find-file "~/note/work.org"))
@@ -259,38 +265,23 @@
     (advice-add #'git-messenger:popup-message :override #'my-git-messenger:popup-message)))
 
 (use-package flycheck
-  :ensure t
-  :init
-  (global-flycheck-mode t))
-
-(setq global-default-tab-width 2)
-
-(use-package web-mode
-  :ensure t
-  :config
-  (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.js[x]?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.ts[x]?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.ejs\\'" . web-mode))
-  (setq web-mode-content-types-alist
-        '(("jsx" . ".*\\.js[x]?\\'"))))
-
-  (add-hook 'web-mode-hook
-      (lambda ()
-        ;; `:separate`  使得不同 backend 分开排序
-        (add-to-list 'company-backends '(company-tide :with company-tabnine :separate))
-        (setq web-mode-code-indent-offset 2)
-        (setq-local web-mode-enable-auto-quoting nil)))
+    :ensure t
+    :init
+    (global-flycheck-mode t)
+    :custom
+    (flycheck-check-syntax-automatically '(mode-enabled save))
+    :config
+    (flycheck-add-mode 'javascript-eslint 'web-mode))
 
 (defun setup-tide-mode ()
   (interactive)
   (tide-setup)
-  (flycheck-mode +1)
-  ;; 保存的时候进行检查
-  ;; flycheck doc http://www.flycheck.org/en/latest/user/syntax-checks.html
+  (flycheck-mode)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (eldoc-mode +1)
-  (tide-hl-identifier-mode +1))
+  (eldoc-mode)
+  (prettier-js-mode)
+  (tide-hl-identifier-mode)
+  (add-to-list 'company-backends '(company-tide :with company-tabnine :separate)))
 
 ;; aligns annotation to the right hand side
 (setq company-tooltip-align-annotations t)
@@ -304,19 +295,62 @@
 
 (use-package tide :ensure t)
 
-(add-hook 'web-mode-hook
-  (lambda ()
-    (when (string-equal "tsx" (file-name-extension buffer-file-name))
-      (setq-local emmet-expand-jsx-className? t)
-      (flycheck-add-mode 'typescript-tslint 'web-mode)
-      (flycheck-add-next-checker 'javascript-eslint 'jsx-tide 'append))
+(use-package web-mode
+  :mode
+  ("\\.html\\'" "\\.tsx\\'" "\\.vue\\'" "\\.svelte\\'" "\\.twig\\'")
+  :init
+  (add-to-list 'magic-mode-alist '("import.*react" . web-mode))
+  :custom
+  (web-mode-block-padding my/indentation-size)
+  (web-mode-style-padding my/indentation-size)
+  (web-mode-script-padding my/indentation-size)
+  (web-mode-attr-indent-offset my/indentation-size)
+  (web-mode-attr-value-indent-offset my/indentation-size)
+  (web-mode-enable-current-element-highlight t)
+  (web-mode-content-types-alist '(("jsx" . "\\.[jt]?s[x]?\\'")
+                                  ("vue" . "\\.vue\\'")))
+  :config
+  (set-face-background 'web-mode-current-element-highlight-face "#AF3A03")
+  :hook
+  (web-mode . emmet-mode))
 
-    (when (string-equal "ts" (file-name-extension buffer-file-name))
-      (flycheck-add-mode 'typescript-tslint 'web-mode)
-      (flycheck-add-next-checker 'javascript-eslint))
+  (add-hook 'web-mode-hook
+      (lambda ()
+        ;; `:separate`  使得不同 backend 分开排序
 
-    (setup-tide-mode)
-    ))
+        (setup-tide-mode)
+        (setq web-mode-code-indent-offset 2)
+        (setq-local web-mode-enable-auto-quoting nil)))
+
+  (add-hook 'web-mode-hook
+            (lambda ()
+              (pcase web-mode-content-type
+                ("jsx" (progn
+                        (setq-local emmet-expand-jsx-className? t)
+                        (setq-local web-mode-enable-auto-quoting nil)
+                        (setup-tide-mode)))
+                ("vue" (setup-tide-mode))
+                ("html" (prettier-js-mode)))))
+
+;; (add-hook 'web-mode-hook
+;;   (lambda ()
+;;     (when (string-equal "tsx" (file-name-extension buffer-file-name))
+;;       (setq-local emmet-expand-jsx-className? t)
+;;       (flycheck-add-mode 'typescript-tslint 'web-mode)
+;;       (flycheck-add-next-checker 'javascript-eslint 'jsx-tide 'append))
+
+;;     (when (string-equal "ts" (file-name-extension buffer-file-name))
+;;       (flycheck-add-mode 'typescript-tslint 'web-mode)
+;;       (flycheck-add-next-checker 'javascript-eslint))
+
+;;     (setup-tide-mode)
+;;     ))
+
+(use-package typescript-mode
+  :custom
+  (typescript-indent-level my/indentation-size)
+  :hook
+  (typescript-mode . setup-tide-mode))
 
 (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append)
 (add-hook 'web-mode-hook
@@ -327,6 +361,16 @@
       (flycheck-add-next-checker 'javascript-eslint 'jsx-tide 'append)
       (setup-tide-mode))
     ))
+
+(use-package js2-mode
+  :mode "\\.js\\'"
+  :custom
+  (js2-basic-offset my/indentation-size)
+  (js2-highlight-level 3)
+  (js2-mode-show-parse-errors nil)
+  (js2-mode-show-strict-warnings nil)
+  :hook
+  (js2-mode . setup-tide-mode))
 
 (require 'vue-mode)
 (require 'lsp-mode)
