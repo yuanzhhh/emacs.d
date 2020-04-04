@@ -469,7 +469,7 @@
 
   (add-hook 'vue-mode-hook 'vuejs-custom)
    #+END_SRC
-* doom-themes
+* doom-themes-dark
   #+BEGIN_SRC emacs-lisp
     ;; (require 'doom-themes)
 

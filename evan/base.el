@@ -265,22 +265,22 @@
     (advice-add #'git-messenger:popup-message :override #'my-git-messenger:popup-message)))
 
 (use-package flycheck
-    :ensure t
-    :init
-    (global-flycheck-mode t)
-    :custom
-    (flycheck-check-syntax-automatically '(mode-enabled save))
-    :config
-    (flycheck-add-mode 'javascript-eslint 'web-mode))
+  :ensure t
+  :init
+  (global-flycheck-mode t)
+  :custom
+  (flycheck-check-syntax-automatically '(mode-enabled save))
+  :config
+  (flycheck-add-mode 'javascript-eslint 'web-mode))
 
 (defun setup-tide-mode ()
   (interactive)
   (tide-setup)
   (flycheck-mode)
-  (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (eldoc-mode)
   (prettier-js-mode)
   (tide-hl-identifier-mode)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (add-to-list 'company-backends '(company-tide :with company-tabnine :separate)))
 
 ;; aligns annotation to the right hand side
@@ -315,22 +315,21 @@
   (web-mode . emmet-mode))
 
   (add-hook 'web-mode-hook
-      (lambda ()
-        ;; `:separate`  使得不同 backend 分开排序
-
-        (setup-tide-mode)
-        (setq web-mode-code-indent-offset 2)
-        (setq-local web-mode-enable-auto-quoting nil)))
+    (lambda ()
+      ;; `:separate`  使得不同 backend 分开排序
+      (setup-tide-mode)
+      (setq web-mode-code-indent-offset 2)
+      (setq-local web-mode-enable-auto-quoting nil)))
 
   (add-hook 'web-mode-hook
-            (lambda ()
-              (pcase web-mode-content-type
-                ("jsx" (progn
-                        (setq-local emmet-expand-jsx-className? t)
-                        (setq-local web-mode-enable-auto-quoting nil)
-                        (setup-tide-mode)))
-                ("vue" (setup-tide-mode))
-                ("html" (prettier-js-mode)))))
+    (lambda ()
+      (pcase web-mode-content-type
+        ("jsx" (progn
+                (setq-local emmet-expand-jsx-className? t)
+                (setq-local web-mode-enable-auto-quoting nil)
+                (setup-tide-mode)))
+        ("vue" (setup-tide-mode))
+        ("html" (prettier-js-mode)))))
 
 ;; (add-hook 'web-mode-hook
 ;;   (lambda ()
