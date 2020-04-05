@@ -264,6 +264,7 @@
     (advice-add #'git-messenger:popup-close :override #'ignore)
     (advice-add #'git-messenger:popup-message :override #'my-git-messenger:popup-message)))
 
+;; (flycheck-select-checker 'javascript-eslint)
 (use-package flycheck
   :ensure t
   :init
@@ -279,14 +280,18 @@
   (flycheck-mode)
   (eldoc-mode)
   (prettier-js-mode)
+  ;;(flycheck-select-checker 'javascript-eslint)
   (tide-hl-identifier-mode)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (add-to-list 'company-backends '(company-tide :with company-tabnine :separate)))
 
+(defun flycheck-javascript ()
+  (interactive)
+  (flycheck-add-mode 'javascript-eslint 'web-mode))
+
 ;; aligns annotation to the right hand side
 (setq company-tooltip-align-annotations t)
 
-;; 当tide被加载后
 (with-eval-after-load 'tide
   ;; evil模式下绑定 g d 跳转定义
   (evil-define-key '(normal) tide-mode-map (kbd "g d") 'tide-jump-to-definition))

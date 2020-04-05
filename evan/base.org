@@ -54,13 +54,13 @@
       create-lockfiles nil)
    #+END_SRC
 ** 匹配括号引号
-    #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
     (autopair-global-mode t)
-    #+END_SRC
+   #+END_SRC
 ** 全屏
-    #+BEGIN_SRC emacs-lisp
+   #+BEGIN_SRC emacs-lisp
     (setq initial-frame-alist (quote ((fullscreen . maximized))))
-    #+END_SRC
+   #+END_SRC
 ** neotree
    #+BEGIN_SRC emacs-lisp
     ;; all-the-icons for https://github.com/domtronn/all-the-icons.el
@@ -318,6 +318,7 @@
 * develop
 ** flycheck
    #+BEGIN_SRC emacs-lisp
+    ;; (flycheck-select-checker 'javascript-eslint)
     (use-package flycheck
       :ensure t
       :init
@@ -329,27 +330,31 @@
    #+END_SRC
 ** Tide
    #+BEGIN_SRC emacs-lisp
-    (defun setup-tide-mode ()
-      (interactive)
-      (tide-setup)
-      (flycheck-mode)
-      (eldoc-mode)
-      (prettier-js-mode)
-      (tide-hl-identifier-mode)
-      (setq flycheck-check-syntax-automatically '(save mode-enabled))
-      (add-to-list 'company-backends '(company-tide :with company-tabnine :separate)))
+     (defun setup-tide-mode ()
+       (interactive)
+       (tide-setup)
+       (flycheck-mode)
+       (eldoc-mode)
+       (prettier-js-mode)
+       ;;(flycheck-select-checker 'javascript-eslint)
+       (tide-hl-identifier-mode)
+       (setq flycheck-check-syntax-automatically '(save mode-enabled))
+       (add-to-list 'company-backends '(company-tide :with company-tabnine :separate)))
 
-    ;; aligns annotation to the right hand side
-    (setq company-tooltip-align-annotations t)
+     (defun flycheck-javascript ()
+       (interactive)
+       (flycheck-add-mode 'javascript-eslint 'web-mode))
 
-    ;; 当tide被加载后
-    (with-eval-after-load 'tide
-      ;; evil模式下绑定 g d 跳转定义
-      (evil-define-key '(normal) tide-mode-map (kbd "g d") 'tide-jump-to-definition))
+     ;; aligns annotation to the right hand side
+     (setq company-tooltip-align-annotations t)
 
-    (setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
+     (with-eval-after-load 'tide
+       ;; evil模式下绑定 g d 跳转定义
+       (evil-define-key '(normal) tide-mode-map (kbd "g d") 'tide-jump-to-definition))
 
-    (use-package tide :ensure t)
+     (setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
+
+     (use-package tide :ensure t)
    #+END_SRC
 ** web-mode
    #+BEGIN_SRC emacs-lisp
