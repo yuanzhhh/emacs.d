@@ -336,9 +336,10 @@
        (flycheck-mode)
        (eldoc-mode)
        (prettier-js-mode)
-       ;;(flycheck-select-checker 'javascript-eslint)
+       ;; TODO 会卡顿
+       ;; (flycheck-select-checker 'javascript-eslint)
        (tide-hl-identifier-mode)
-       (setq flycheck-check-syntax-automatically '(save mode-enabled))
+       ;; (setq flycheck-check-syntax-automatically '(save mode-enabled))
        (add-to-list 'company-backends '(company-tide :with company-tabnine :separate)))
 
      (defun flycheck-javascript ()
