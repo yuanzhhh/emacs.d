@@ -348,9 +348,9 @@ you should place your code here."
   (org-babel-load-file (expand-file-name "~/.spacemacs.d/evan/base.org" user-emacs-directory))
   (add-to-list 'load-path "~/.spacemacs.d/snails")
   (add-to-list 'load-path "~/.spacemacs.d/smart-align")
-  (add-to-list 'load-path "~/.spacemacs.d/nerd-icons.el")
+  ;; (add-to-list 'load-path "~/.spacemacs.d/nerd-icons.el")
 
-  (require 'nerd-icons)
+  ;; (require 'nerd-icons)
   ;; 弹框模糊搜索
   (require 'snails)
   ;; 赋值对齐
