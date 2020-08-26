@@ -177,6 +177,14 @@
 
 
 
+(use-package centaur-tabs
+  :demand
+  :config
+  (centaur-tabs-mode t)
+  :bind
+  ("C-<" . centaur-tabs-backward)
+  ("C->" . centaur-tabs-forward))
+
 (use-package git-timemachine
   :custom-face
   (git-timemachine-minibuffer-author-face ((t (:inherit success))))
