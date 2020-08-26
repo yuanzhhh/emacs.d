@@ -185,6 +185,8 @@
   ("C-<" . centaur-tabs-backward)
   ("C->" . centaur-tabs-forward))
 
+(setq centaur-tabs-cycle-scope 'groups)
+
 (use-package git-timemachine
   :custom-face
   (git-timemachine-minibuffer-author-face ((t (:inherit success))))
