@@ -224,14 +224,14 @@
    #+END_SRC
 ** centaur-tabs
    #+BEGIN_SRC emacs-lisp
-    (use-package centaur-tabs
+   (use-package centaur-tabs
       :demand
       :config
       (centaur-tabs-mode t)
       :bind
       ("C-<" . centaur-tabs-backward)
       ("C->" . centaur-tabs-forward))
-      
+
     (setq centaur-tabs-cycle-scope 'groups)
    #+END_SRC
 * Git
