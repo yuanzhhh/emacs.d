@@ -178,14 +178,14 @@
 
 
 (use-package centaur-tabs
-  :demand
-  :config
-  (centaur-tabs-mode t)
-  :bind
-  ("C-<" . centaur-tabs-backward)
-  ("C->" . centaur-tabs-forward))
+   :demand
+   :config
+   (centaur-tabs-mode t)
+   :bind
+   ("C-<" . centaur-tabs-backward)
+   ("C->" . centaur-tabs-forward))
 
-(setq centaur-tabs-cycle-scope 'groups)
+ (setq centaur-tabs-cycle-scope 'tabs)
 
 (use-package git-timemachine
   :custom-face
