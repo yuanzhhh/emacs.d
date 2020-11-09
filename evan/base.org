@@ -234,6 +234,11 @@
 
     (setq centaur-tabs-cycle-scope 'tabs)
    #+END_SRC
+** Org
+   #+BEGIN_SRC emacs-lisp
+    (require 'org-bullets)
+    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+   #+END_SRC
 * Git
 ** Walk through git revisions of a file
    #+BEGIN_SRC emacs-lisp
