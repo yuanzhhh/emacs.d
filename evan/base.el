@@ -71,13 +71,13 @@
   (interactive)
   (do-applescript
    (concat
-    " tell application \"iTerm\"\n"
-    "   tell the current session of current window\n"
+    "tell application \"iTerm\"\n"
+    "tell the current session of current window\n"
     (format "     write text \"cd %s\" \n"
             ;; string escaping madness for applescript
             (replace-regexp-in-string "\\\\" "\\\\\\\\"
                                       (shell-quote-argument (or (projectile-project-root default-directory)))))
-    "   end tell\n"
+    " end tell\n"
     " end tell\n"
     " do shell script \"open -a iTerm\"\n"
     ))
