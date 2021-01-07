@@ -1,14 +1,30 @@
 # emacs.d
-My Emacs Configuration
-
 ```
-cd ~
-mv .emacs.d .emacs.d.bak
-mv .emacs .emacs.bak
-git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-
-emacs
-
-mkdir ~/.spacemacs.d
-mv ~/.spacemacs ~/.spacemacs.d/init.el
+$ cd ~
+$ mv .emacs.d .emacs.d.bak
+$ mv .emacs .emacs.bak
 ```
+Install emacs@26
+```
+$ brew tap d12frosted/emacs-plus
+$ brew install emacs-plus@26
+```
+Or install emacs-mac
+```
+https://github.com/railwaycat/homebrew-emacsmacport/releases/tag/emacs-26.3-mac-7.9
+```
+Install Ag serch
+```
+brew install ag
+```
+Install config
+```
+$ git clone https://github.com/yuanzhhh/emacs.d ./.spacemacs.d
+$ git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+$ cd .emacs.d && git checkout master
+```
+In emacs
+```
+M-x company-tabnine-install-binary
+```
+
