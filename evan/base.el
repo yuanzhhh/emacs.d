@@ -279,7 +279,18 @@
     (advice-add #'git-messenger:popup-close :override #'ignore)
     (advice-add #'git-messenger:popup-message :override #'my-git-messenger:popup-message)))
 
-;; (flycheck-select-checker 'javascript-eslint)
+(defun my/use-eslint-from-node-modules ()
+  (let* ((root (locate-dominating-file
+                (or (buffer-file-name) default-directory)
+                "node_modules"))
+         (eslint (and root
+                      (expand-file-name "node_modules/eslint/bin/eslint.js"
+                                        root))))
+    (when (and eslint (file-executable-p eslint))
+      (setq-local flycheck-javascript-eslint-executable eslint))))
+
+(add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
+
 (use-package flycheck
   :ensure t
   :init
@@ -288,6 +299,10 @@
   (flycheck-check-syntax-automatically '(mode-enabled save))
   :config
   (flycheck-add-mode 'javascript-eslint 'web-mode))
+
+(setq-default flycheck-disabled-checkers
+              (append flycheck-disabled-checkers
+                      '(json-jsonlist)))
 
 (defun setup-tide-mode ()
   (interactive)
@@ -339,6 +354,8 @@
           (lambda ()
             ;; `:separate`  使得不同 backend 分开排序
             (setup-tide-mode)
+            (setq web-mode-markup-indent-offset 2)
+            (setq web-mode-css-indent-offset 2)
             (setq web-mode-code-indent-offset 2)
             (setq-local web-mode-enable-auto-quoting nil)))
 
@@ -352,19 +369,8 @@
               ("vue" (setup-tide-mode))
               ("html" (prettier-js-mode)))))
 
-;; (add-hook 'web-mode-hook
-;;   (lambda ()
-;;     (when (string-equal "tsx" (file-name-extension buffer-file-name))
-;;       (setq-local emmet-expand-jsx-className? t)
-;;       (flycheck-add-mode 'typescript-tslint 'web-mode)
-;;       (flycheck-add-next-checker 'javascript-eslint 'jsx-tide 'append))
-
-;;     (when (string-equal "ts" (file-name-extension buffer-file-name))
-;;       (flycheck-add-mode 'typescript-tslint 'web-mode)
-;;       (flycheck-add-next-checker 'javascript-eslint))
-
-;;     (setup-tide-mode)
-;;     ))
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
 
 (use-package typescript-mode
   :custom
@@ -391,6 +397,8 @@
   (js2-mode-show-strict-warnings nil)
   :hook
   (js2-mode . setup-tide-mode))
+
+
 
 (require 'vue-mode)
 (require 'lsp-mode)
