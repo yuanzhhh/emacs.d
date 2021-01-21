@@ -133,6 +133,8 @@
              (seq-drop candidates-2 2)))))
 
 (add-to-list 'company-transformers 'company//sort-by-tabnine t)
+;; `:separate`  使得不同 backend 分开排序
+(add-to-list 'company-backends '(company-lsp :with company-tabnine :separate))
 
 ;; The free version of TabNine is good enough,
 ;; and below code is recommended that TabNine not always
@@ -352,7 +354,6 @@
 
 (add-hook 'web-mode-hook
           (lambda ()
-            ;; `:separate`  使得不同 backend 分开排序
             (setup-tide-mode)
             (setq web-mode-markup-indent-offset 2)
             (setq web-mode-css-indent-offset 2)
