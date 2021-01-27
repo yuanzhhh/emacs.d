@@ -193,6 +193,7 @@
 
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(add-hook 'org-mode-hook #'valign-mode)
 
 (use-package git-timemachine
   :custom-face
@@ -355,9 +356,9 @@
 (add-hook 'web-mode-hook
           (lambda ()
             (setup-tide-mode)
-            (setq web-mode-markup-indent-offset 2)
-            (setq web-mode-css-indent-offset 2)
-            (setq web-mode-code-indent-offset 2)
+            ;; (setq web-mode-markup-indent-offset 2)
+            ;; (setq web-mode-css-indent-offset 2)
+            ;; (setq web-mode-code-indent-offset 2)
             (setq-local web-mode-enable-auto-quoting nil)))
 
 (add-hook 'web-mode-hook
