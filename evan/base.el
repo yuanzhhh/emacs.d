@@ -313,6 +313,7 @@
   (flycheck-mode)
   (eldoc-mode)
   (prettier-js-mode)
+
   ;; TODO 会卡顿
   ;; (flycheck-select-checker 'javascript-eslint)
   (tide-hl-identifier-mode)
@@ -970,5 +971,9 @@ determine the exact padding."
      `(git-gutter:added     ((t (:background ,diff-add :foreground ,diff-add))))
      `(git-gutter:modified  ((t (:background ,diff-mod :foreground ,diff-mod))))
      `(git-gutter:deleted   ((t (:background ,diff-rem :foreground ,diff-rem)))))))
+
+(custom-set-faces
+ '(org-done ((t (:inherit bold :background "#ECEAE1" :foreground "#FFFEFA" :weight bold))))
+ '(org-todo ((t (:inherit bold :background "#ECEAE1" :foreground "#FFFEFA" :weight bold)))))
 
 
