@@ -54,6 +54,7 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '
    (
+    org-download
     company
     company-tabnine
     nlinum
