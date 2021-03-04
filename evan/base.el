@@ -1,5 +1,5 @@
-(setq global-default-tab-width 2)
-(defvar my/indentation-size 2)
+(setq global-default-tab-width 4)
+(defvar my/indentation-size 4)
 (setq standard-indent my/indentation-size)
 (setq-default indent-tabs-mode nil
               tab-width my/indentation-size)
@@ -329,6 +329,7 @@
               (append flycheck-disabled-checkers
                       '(json-jsonlist)))
 
+(require 'js-doc)
 (defun setup-tide-mode ()
   (interactive)
   (tide-setup)
@@ -356,6 +357,13 @@
 (setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
 
 (use-package tide :ensure t)
+
+(global-set-key (kbd "C-; f") 'js-doc-insert-file-doc)
+(global-set-key (kbd "C-; ;") 'js-doc-insert-function-doc)
+(global-set-key (kbd "C-; C-;") 'tide-jsdoc-template)
+(global-set-key (kbd "<C-return>") 'c-indent-new-comment-line)
+(global-set-key (kbd "C-; t") 'js-doc-insert-tag)
+(global-set-key (kbd "C-; h") 'js-doc-describe-tag)
 
 (use-package web-mode
   :mode
