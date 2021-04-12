@@ -331,10 +331,10 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  (setq configuration-layer--elpa-archives
-        '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-          ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-          ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
+  ;; (setq configuration-layer--elpa-archives
+  ;;       '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+  ;;         ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+  ;;         ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
 
   (setq evil-want-keybinding nil)
   (when (require 'evil-collection nil t)
@@ -356,11 +356,11 @@ you should place your code here."
   (org-babel-load-file (expand-file-name "~/.spacemacs.d/evan/base.org" user-emacs-directory))
   (add-to-list 'load-path "~/.spacemacs.d/snails")
   (add-to-list 'load-path "~/.spacemacs.d/smart-align")
-  ;; (add-to-list 'load-path "~/.spacemacs.d/evil-magit")
+  (add-to-list 'load-path "~/.spacemacs.d/evil-magit")
   ;; (add-to-list 'load-path "~/.spacemacs.d/nerd-icons.el")
 
   ;; (require 'nerd-icons)
-  ;; (require 'evil-magit)
+  (require 'evil-magit)
   ;; 弹框模糊搜索
   (require 'snails)
   ;; 赋值对齐
