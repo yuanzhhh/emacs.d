@@ -20,7 +20,7 @@ brew install ag
 Install config
 ```
 $ git clone https://github.com/yuanzhhh/emacs.d ./.spacemacs.d
-$ git clone -b master https://github.com/syl20bnr/spacemacs ~/.emacs.d
+$ git clone https://github.com/yuanzhhh/base.emacs.d ~/.emacs.d
 ```
 In emacs
 ```
