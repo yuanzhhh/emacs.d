@@ -166,7 +166,7 @@ values."
    dotspacemacs-default-font '(
                                "MonoLisa"
                                ;; "Menlo"
-                               :size 16
+                               :size 15
                                :weight bold
                                :width normal
                                :powerline-scale 1.2)
@@ -345,7 +345,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; 设置中文字体
   (dolist (charset '(kana han symbol cjk-misc bopomofo))
     (set-fontset-font (frame-parameter nil 'font)
-                      charset (font-spec :family "华文细黑" :size 16)))
+                      charset (font-spec :family "华文细黑" :size 15)))
   )
 
 (defun dotspacemacs/user-config ()
