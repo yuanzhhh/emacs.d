@@ -1,5 +1,5 @@
-(setq global-default-tab-width 4)
-(defvar my/indentation-size 4)
+(setq global-default-tab-width 2)
+(defvar my/indentation-size 2)
 (setq standard-indent my/indentation-size)
 (setq-default indent-tabs-mode nil
               tab-width my/indentation-size)
