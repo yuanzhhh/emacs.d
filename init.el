@@ -166,10 +166,11 @@ values."
    dotspacemacs-default-font '(
                                "MonoLisa"
                                ;; "Menlo"
-                               :size 15
-                               :weight bold
+                               :size 14
+                               :weight semi-light
                                :width normal
-                               :powerline-scale 1.2)
+                               ;; :powerline-scale 1.2
+                               )
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -345,7 +346,10 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; 设置中文字体
   (dolist (charset '(kana han symbol cjk-misc bopomofo))
     (set-fontset-font (frame-parameter nil 'font)
-                      charset (font-spec :family "华文细黑" :size 15)))
+                      ;; charset (font-spec :family "华文细黑" :size 15)))
+                      charset (font-spec :family "MonoLisa" :size 15)))
+
+  (setq unicode-fonts-force-multi-color-on-mac nil)
   )
 
 (defun dotspacemacs/user-config ()
