@@ -1006,6 +1006,4 @@ determine the exact padding."
  '(org-done ((t (:inherit bold :background "#ECEAE1" :foreground "#FFFEFA" :weight bold))))
  '(org-todo ((t (:inherit bold :background "#ECEAE1" :foreground "#FFFEFA" :weight bold)))))
 
-(require 'unicode-fonts)
-(unicode-fonts-setup)
-(unicode-fonts :variables unicode-fonts-ligature-set '("==" "===" "!=" "!==" "||" "&&"))
+
