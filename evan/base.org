@@ -55,7 +55,7 @@
    #+END_SRC
 ** 匹配括号引号
    #+BEGIN_SRC emacs-lisp
-     (autopair-global-mode t)
+     ;; (autopair-global-mode t)
    #+END_SRC
 ** 全屏
    #+BEGIN_SRC emacs-lisp
@@ -1088,4 +1088,6 @@
   #+END_SRC
 * Test
   #+BEGIN_SRC emacs-lisp
+    (require 'unicode-fonts)
+    (unicode-fonts-setup)
   #+END_SRC
