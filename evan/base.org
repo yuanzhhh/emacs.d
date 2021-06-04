@@ -1086,8 +1086,11 @@
      '(org-done ((t (:inherit bold :background "#ECEAE1" :foreground "#FFFEFA" :weight bold))))
      '(org-todo ((t (:inherit bold :background "#ECEAE1" :foreground "#FFFEFA" :weight bold)))))
   #+END_SRC
+* unicode-fonts
+  #+BEGIN_SRC emacs-lisp
+    ;; (require 'unicode-fonts)
+    ;; (unicode-fonts-setup)
+  #+END_SRC
 * Test
   #+BEGIN_SRC emacs-lisp
-    (require 'unicode-fonts)
-    (unicode-fonts-setup)
   #+END_SRC
