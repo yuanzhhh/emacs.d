@@ -336,8 +336,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   (setq configuration-layer--elpa-archives
         '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-         ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-         ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
+          ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+          ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
 
   (setq evil-want-keybinding nil)
   (when (require 'evil-collection nil t)
@@ -350,6 +350,16 @@ before packages are loaded. If you are unsure, you should try in setting them in
                       charset (font-spec :family "MonoLisa" :size 15)))
 
   (setq unicode-fonts-force-multi-color-on-mac nil)
+
+  (defalias 'which-key-declare-prefixes 'which-key-add-key-based-replacements)
+  (make-obsolete 'which-key-declare-prefixes
+                 'which-key-add-key-based-replacements
+                 "2016-10-05")
+  (defalias 'which-key-declare-prefixes-for-mode
+    'which-key-add-major-mode-key-based-replacements)
+  (make-obsolete 'which-key-declare-prefixes-for-mode
+                 'which-key-add-major-mode-key-based-replacements
+                 "2016-10-05")
   )
 
 (defun dotspacemacs/user-config ()
