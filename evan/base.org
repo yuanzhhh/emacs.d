@@ -1091,6 +1091,51 @@
     ;; (require 'unicode-fonts)
     ;; (unicode-fonts-setup)
   #+END_SRC
-* Test
+* css
+  #+BEGIN_SRC emacs-lisp
+    ;; Embedding in html
+    (require 'mmm-mode)
+    (with-eval-after-load 'mmm-vars
+      (mmm-add-group
+       'html-css
+       '((css-cdata
+          :submode css-mode
+          :face mmm-code-submode-face
+          :front "<style[^>]*>[ \t\n]*\\(//\\)?<!\\[CDATA\\[[ \t]*\n?"
+          :back "[ \t]*\\(//\\)?]]>[ \t\n]*</style>"
+          :insert ((?c css-tag nil @ "<style type=\"text/css\">"
+                       @ "\n" _ "\n" @ "</style>" @)))
+         (css
+          :submode css-mode
+          :face mmm-code-submode-face
+          :front "<style[^>]*>[ \t]*\n?"
+          :back "[ \t]*</style>"
+          :insert ((?c css-tag nil @ "<style type=\"text/css\">"
+                       @ "\n" _ "\n" @ "</style>" @)))
+         (css-inline
+          :submode css-mode
+          :face mmm-code-submode-face
+          :front "style=\""
+          :back "\"")))
+      (dolist (mode (list 'html-mode 'nxml-mode))
+        (mmm-add-mode-ext-class mode "\\.r?html\\(\\.erb\\)?\\'" 'html-css)))
+
+
+    (require 'sass-mode)
+    (unless (fboundp 'scss-mode)
+      ;; Prefer the scss-mode built into Emacs
+      (require 'scss-mode))
+    (setq-default scss-compile-at-save nil)
+
+
+    (unless (fboundp 'less-css-mode)
+      ;; Prefer the scss-mode built into Emacs
+      (require 'less-css-mode))
+
+    (require 'css-eldoc)
+    (autoload 'turn-on-css-eldoc "css-eldoc")
+    (add-hook 'css-mode-hook 'turn-on-css-eldoc)
+  #+END_SRC
+* test
   #+BEGIN_SRC emacs-lisp
   #+END_SRC

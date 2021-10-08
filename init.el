@@ -55,6 +55,9 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '
    (
+    css-eldoc
+    skewer-mode
+    skewer-less
     evil-collection
     org-download
     company
