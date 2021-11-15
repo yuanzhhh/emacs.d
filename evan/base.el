@@ -28,7 +28,7 @@
 (global-set-key (kbd "C-c z") 'reveal-in-osx-finder)
 
 ;; Linum mode 行数多了会卡
-(global-nlinum-mode)
+;; (global-nlinum-mode)
 
 (setq backup-inhibited t
       make-backup-files nil

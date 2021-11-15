@@ -43,7 +43,7 @@
 ** 显示行号
    #+BEGIN_SRC emacs-lisp
      ;; Linum mode 行数多了会卡
-     (global-nlinum-mode)
+     ;; (global-nlinum-mode)
    #+END_SRC
 ** 禁止自动保存、备份
    #+BEGIN_SRC emacs-lisp
