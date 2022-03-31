@@ -170,7 +170,7 @@ values."
                                "MonoLisa"
                                ;; "Menlo"
                                :size 14
-                               :weight semi-light
+                               :weight regular
                                :width normal
                                ;; :powerline-scale 1.2
                                )
